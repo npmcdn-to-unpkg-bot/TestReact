@@ -1,9 +1,11 @@
 import React, {PropTypes} from 'react';
 import {Router, Route, IndexRoute, Link} from 'react-router';
 import Login from '../components/Login/Login';
+import MainLayout from '../layouts/MainLayout/MainLayout';
 
 const Routes = ({history}) =>
     <Router history={history}>
+        <Route path="/" component={MainLayout}/>
         <Route path="*" component={Login}/>
     </Router>;
 
