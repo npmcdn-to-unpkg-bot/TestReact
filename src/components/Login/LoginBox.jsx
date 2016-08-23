@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import styles from "./Login.less";
+import styles from "./style.less";
 import {Input, Button} from "antd";
 
 export default class LoginBox extends Component {
