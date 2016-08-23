@@ -33,6 +33,29 @@
   background: #41586e;
   display: table-cell;
   position: relative;
+  :global {
+    .ant-menu {
+      background: #41586e;
+      .ant-menu-submenu-title {
+        padding: 0px !important;
+        border-bottom: 1px solid rgb(74, 96, 117);;
+        color: #adbece;
+      }
+      .ant-menu-item {
+        background-color: #374b5e;
+        border-bottom: 1px solid rgb(74, 96, 117);;
+      }
+    }
+    .anticon {
+      vertical-align: top;
+      width: 42px;
+      background: none;
+      height: 100%;
+      font-size: 14px;
+      line-height: 42px;
+      margin: 0px;
+    }
+  }
 }
 
 .menuClose {

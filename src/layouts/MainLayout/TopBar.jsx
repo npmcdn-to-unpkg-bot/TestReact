@@ -1,20 +1,13 @@
-import React, {Component, PropTypes} from 'react';
-import styles from './MainLayout.less';
+import React, { Component, PropTypes } from 'react';
+import styles from './style.less';
+import logoImage from "./logo.png";
 
-export default class MainLayout extends Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className={styles.top}>
-
-            </div>
-        )
-    }
-};
-
-MainLayout.propTypes = {
-    children: PropTypes.element.isRequired,
+export default class TopBar extends Component {
+	render() {
+		return (
+			<div className={styles.top}>
+				<img className={styles.logo} src={logoImage}/>
+			</div>
+		)
+	}
 };
