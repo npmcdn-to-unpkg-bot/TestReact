@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import styles from './Login.less';
+import styles from './style.less';
 import LoginBox from "./LoginBox";
 
 export default class Login extends Component {
