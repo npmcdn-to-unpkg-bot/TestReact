@@ -1,46 +1,40 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import styles from './style.less';
-import {Menu, Icon, Switch} from 'antd';
+import { Menu, Icon, Switch } from 'antd';
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
 
 export default class MyMenu extends Component {
-    constructor() {
-        super();
-        this.state = {
-            mode: "inline"
-        };
-    }
+	constructor( props ) {
+		super( props );
+		this.state = {
+			mode: "inline"
+		};
+	}
 
-    changeMode(value) {
-        this.setState({
-            mode: value ? 'vertical' : 'inline'
-        });
-    }
+	changeMode() {
+		console.log( this.state.mode );
+		this.setState( {
+			mode: this.state.mode == "inline" ? 'vertical' : 'inline'
+		} );
+	}
 
-    render() {
-        return (
-            <div className={styles.menu}>
-                <Menu style={{width: 240}} defaultOpenKeys={['sub1']} mode={this.state.mode}>
-                    <SubMenu key="sub1" title={<span><Icon type="mail"/><span>导航一0</span></span>}>
-                        <Menu.Item key="1">选项1</Menu.Item>
-                        <Menu.Item key="2">选项003</Menu.Item>
-                        <Menu.Item key="3">选项3</Menu.Item>
-                        <Menu.Item key="4">选项4</Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub2" title={<span><Icon type="appstore"/><span>导航二</span></span>}>
-                        <Menu.Item key="5">选项5</Menu.Item>
-                        <Menu.Item key="6">选项6</Menu.Item>
-                    </SubMenu>
-                    <SubMenu key="sub4" title={<span><Icon type="setting"/><span>导航三</span></span>}>
-                        <Menu.Item key="9">选项9</Menu.Item>
-                        <Menu.Item key="10">选项10</Menu.Item>
-                        <Menu.Item key="11">选项11</Menu.Item>
-                        <Menu.Item key="12">选项12</Menu.Item>
-                    </SubMenu>
-                </Menu>
-                <div onChange={this.changeMode} className={styles.menuClose}>展开/收起</div>
-            </div>
-        );
-    }
+	render() {
+		return (
+			<div className={ styles.menu }>
+				<Menu mode={this.state.mode}>
+					{this.props.menus.map( menu=> {
+						return (
+							<SubMenu key={menu.title} title={<span><Icon type={menu.icon}/><span className="title">{menu.title}</span></span>}>
+								{menu.menus.map( subMenu=> {
+									return <Menu.Item key={subMenu.title}><Icon type={subMenu.icon}/>{subMenu.title}</Menu.Item>
+								} )}
+							</SubMenu>
+						)
+					} )}
+				</Menu>
+				<div onClick={this.changeMode.bind( this )}
+				     className={styles.menuClose}>{this.state.mode == "inline" ? "收起" : "展开"}</div>
+			</div>
+		);
+	}
 }
