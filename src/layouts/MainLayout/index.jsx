@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import {Breadcrumb} from "antd";
+import {Breadcrumb, Card} from "antd";
 import TopBar from "./TopBar";
 import Menu from "./Menu";
 import styles from './style.less';
@@ -75,6 +75,8 @@ let menus = [
     }
 ];
 
+const linkRender = (href, name) => <a href={`${href}`}>{name}</a>;
+
 export default class MainLayout extends Component {
     constructor(props) {
         super(props)
@@ -89,8 +91,12 @@ export default class MainLayout extends Component {
                         <Menu menus={menus}/>
                         <div style={{display: "table-cell", position: "relative"}}>
                             <div style={{width: "100%", position: "absolute"}}>
-                                <Breadcrumb {...this.props}/>
-                                {this.props.children}
+                                <div style={{padding: "20px 20px 0px 20px"}}>
+                                    <Breadcrumb  {...this.props} linkRender={linkRender}/>
+                                </div>
+                                <div style={{margin: "20px", backgroundColor: "#FFFFFF"}}>
+                                    {this.props.children}
+                                </div>
                             </div>
                         </div>
                     </div>

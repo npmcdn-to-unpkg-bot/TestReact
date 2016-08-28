@@ -85,7 +85,6 @@ const rowSelection = {
 export default class UserComponent extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props);
     }
 
     render() {
