@@ -1,5 +1,6 @@
 const webpack = require( "webpack" );
 const WebpackDevServer = require( "webpack-dev-server" );
+const open = require( "open" );
 const path = require( "path" );
 const port = 8000;
 var config = {
@@ -63,3 +64,4 @@ var server = new WebpackDevServer( compiler, {
 } );
 
 server.listen( port );
+open( "http://localhost:" + port );
